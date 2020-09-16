@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,6 +16,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
+    ImageView imageView;
     private String KEY = "1gzGfmSJbbcPKLiDyd59NHKlQhXSD8iAbGnezrDS";
 
     @Override
@@ -22,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
          textView = (TextView)findViewById(R.id.textView);
+        imageView =(ImageView)findViewById(R.id.imageView);
         NetworkService.getInstance()
                 .getJSONApi()
                 .getPostWithID(KEY)
@@ -31,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
                         Post post = response.body();
 
                         textView.append(post.getDate() + "\n");
+
+                        Picasso.with(getApplicationContext())
+                                .load(post.getUrl())
+                                .placeholder(R.drawable.ic_launcher_background)
+                                .error(R.drawable.ic_launcher_foreground)
+                                .into(imageView);
 
                     }
 
