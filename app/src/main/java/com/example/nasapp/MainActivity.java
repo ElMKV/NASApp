@@ -13,25 +13,25 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
+    private String KEY = "1gzGfmSJbbcPKLiDyd59NHKlQhXSD8iAbGnezrDS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
          textView = (TextView)findViewById(R.id.textView);
         NetworkService.getInstance()
                 .getJSONApi()
-                .getPostWithID(1)
+                .getPostWithID(KEY)
                 .enqueue(new Callback<Post>() {
                     @Override
                     public void onResponse(@NonNull Call<Post> call, @NonNull Response<Post> response) {
                         Post post = response.body();
 
-                        textView.append(post.getId() + "\n");
-                        textView.append(post.getUserId() + "\n");
-                        textView.append(post.getTitle() + "\n");
-                        textView.append(post.getBody() + "\n");
+                        textView.append(post.getDate() + "\n");
+
                     }
 
                     @Override

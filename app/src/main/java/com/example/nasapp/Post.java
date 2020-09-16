@@ -4,33 +4,66 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Post {
-    @SerializedName("userId")
+    @SerializedName("date")
     @Expose
-    private int userId;
-    @SerializedName("id")
+    private String date;
+    @SerializedName("explanation")
     @Expose
-    private int id;
+    private String explanation;
+    @SerializedName("hdurl")
+    @Expose
+    private String hdurl;
+    @SerializedName("media_type")
+    @Expose
+    private String mediaType;
+    @SerializedName("service_version")
+    @Expose
+    private String serviceVersion;
     @SerializedName("title")
     @Expose
     private String title;
-    @SerializedName("body")
+    @SerializedName("url")
     @Expose
-    private String body;
+    private String url;
 
-    public int getUserId() {
-        return userId;
+    public String getDate() {
+        return date;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public int getId() {
-        return id;
+    public String getExplanation() {
+        return explanation;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public String getHdurl() {
+        return hdurl;
+    }
+
+    public void setHdurl(String hdurl) {
+        this.hdurl = hdurl;
+    }
+
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
+    public String getServiceVersion() {
+        return serviceVersion;
+    }
+
+    public void setServiceVersion(String serviceVersion) {
+        this.serviceVersion = serviceVersion;
     }
 
     public String getTitle() {
@@ -41,11 +74,12 @@ public class Post {
         this.title = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getUrl() {
+        return url;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setUrl(String url) {
+        this.url = url;
     }
+
 }
