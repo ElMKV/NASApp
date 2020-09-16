@@ -5,7 +5,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-public interface NASAIMAGEApi {
+public interface NASAIMAGEAPI {
     @GET("/planetary/apod?")
     public Call<Post> getPostWithID(@Query("api_key") String KEY);
 

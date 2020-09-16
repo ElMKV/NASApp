@@ -30,8 +30,8 @@ public class NetworkService {
         }
         return mInstance;
     }
-    public NASAIMAGEApi getJSONApi() {
-        return mRetrofit.create(NASAIMAGEApi.class);
+    public NASAIMAGEAPI getImage() {
+        return mRetrofit.create(NASAIMAGEAPI.class);
     }
     public NASACOMETAPI getData() {
         return mRetrofit.create(NASACOMETAPI.class);
