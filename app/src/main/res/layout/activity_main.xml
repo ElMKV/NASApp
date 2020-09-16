@@ -6,10 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="30sp" />
 </LinearLayout>
