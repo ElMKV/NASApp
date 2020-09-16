@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -15,7 +16,9 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
+    TextView textViewName;
+    TextView textViewData;
+    TextView textViewDesc;
     ImageView imageView;
     private String KEY = "1gzGfmSJbbcPKLiDyd59NHKlQhXSD8iAbGnezrDS";
 
@@ -25,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-         textView = (TextView)findViewById(R.id.textView);
-        imageView =(ImageView)findViewById(R.id.imageView);
+        textViewName = (TextView) findViewById(R.id.textViewTitle);
+        textViewData = (TextView) findViewById(R.id.textViewData);
+        textViewDesc = (TextView) findViewById(R.id.textViewDesc);
+        imageView = (ImageView) findViewById(R.id.imageView);
         NetworkService.getInstance()
                 .getJSONApi()
                 .getPostWithID(KEY)
@@ -35,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(@NonNull Call<Post> call, @NonNull Response<Post> response) {
                         Post post = response.body();
 
-                        textView.append(post.getDate() + "\n");
+                        textViewName.append(post.getTitle());
+                        textViewData.append(post.getDate());
+                        textViewData.append(post.getExplanation());
 
                         Picasso.with(getApplicationContext())
                                 .load(post.getUrl())
@@ -47,14 +54,12 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(@NonNull Call<Post> call, @NonNull Throwable t) {
-
-                        textView.append("Error occurred while getting request!");
+                        Toast toast = Toast.makeText(getApplicationContext(), "Error occurred while getting request!", Toast.LENGTH_SHORT);
                         t.printStackTrace();
                     }
                 });
 
     }
-
 
 
 }
