@@ -30,7 +30,11 @@ public class NetworkService {
         }
         return mInstance;
     }
-    public JSONPlaceHolderApi getJSONApi() {
-        return mRetrofit.create(JSONPlaceHolderApi.class);
+    public NASAIMAGEApi getJSONApi() {
+        return mRetrofit.create(NASAIMAGEApi.class);
     }
+    public NASACOMETAPI getData() {
+        return mRetrofit.create(NASACOMETAPI.class);
+    }
+
 }

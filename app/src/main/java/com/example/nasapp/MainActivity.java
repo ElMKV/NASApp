@@ -13,11 +13,11 @@ import com.squareup.picasso.Picasso;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Query;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView textViewName;
-// TextView textViewData;
     TextView textViewDesc;
     ImageView imageView;
     private String KEY = "1gzGfmSJbbcPKLiDyd59NHKlQhXSD8iAbGnezrDS";
@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         textViewName = (TextView) findViewById(R.id.textViewTitle);
-//        textViewData = (TextView) findViewById(R.id.textViewData);
         textViewDesc = (TextView) findViewById(R.id.textViewDesc);
         imageView = (ImageView) findViewById(R.id.imageView);
+
         NetworkService.getInstance()
                 .getJSONApi()
                 .getPostWithID(KEY)
@@ -40,15 +40,14 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(@NonNull Call<Post> call, @NonNull Response<Post> response) {
                         Post post = response.body();
                         textViewName.append(post.getTitle());
-//                        textViewData.append(post.getDate());
                         textViewDesc.append(post.getExplanation());
                         Picasso.with(getApplicationContext())
                                 .load(post.getUrl())
                                 .placeholder(R.drawable.ic_launcher_background)
                                 .error(R.drawable.dino_error)
                                 .into(imageView);
-
                     }
+
 
                     @Override
                     public void onFailure(@NonNull Call<Post> call, @NonNull Throwable t) {
@@ -57,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+
+
+
     }
-
-
 }
