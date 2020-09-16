@@ -39,15 +39,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(@NonNull Call<Post> call, @NonNull Response<Post> response) {
                         Post post = response.body();
-
                         textViewName.append(post.getTitle());
                         textViewData.append(post.getDate());
                         textViewData.append(post.getExplanation());
-
                         Picasso.with(getApplicationContext())
                                 .load(post.getUrl())
                                 .placeholder(R.drawable.ic_launcher_background)
-                                .error(R.drawable.ic_launcher_foreground)
+                                .error(R.drawable.dino_error)
                                 .into(imageView);
 
                     }
