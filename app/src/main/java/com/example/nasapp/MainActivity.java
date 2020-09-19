@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
         textViewNameComet = (TextView) findViewById(R.id.textViewNameComet);
 
+
+    }
+
+
+    private void loadJSON() {
+
         NetworkService.getInstance()
                 .getHolder()
                 .getPostWithID(KEY)
@@ -71,35 +78,57 @@ public class MainActivity extends AppCompatActivity {
                         t.printStackTrace();
                     }
                 });
+        NetworkService.getInstance()
+                .getHolder()
+                .getJSON(KEY)
+                .enqueue(new Callback<JSONResponse>() {
+                    @Override
+                    public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
+                        Log.d("json", "Вошел");
+                        JSONResponse jsonResponse = response.body();
+                        data = new ArrayList<>(Arrays.asList(jsonResponse.getNearNarthObjects()));
+
+
+
+
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<JSONResponse> call, Throwable t) {
+
+                    }
+                });
+
+
+//
+//            Retrofit retrofit = new Retrofit.Builder()
+//                    .baseUrl("https://api.nasa.gov")
+//                    .addConverterFactory(GsonConverterFactory.create())
+//                    .build();
+//            NASAIMAGEAPI request = retrofit.create(NASAIMAGEAPI.class);
+//            Call<JSONResponse> call = request.getJSON(KEY);
+//            call.enqueue(new Callback<JSONResponse>() {
+//                @Override
+//                public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
+//
+//                    Log.d("json" , "Вошел");
+//
+//                    JSONResponse jsonResponse = response.body();
+//                    data = new ArrayList<>(Arrays.asList(jsonResponse.getNearNarthObjects()));
+//
+//
+//
+//                }
+//
+//                @Override
+//                public void onFailure(Call<JSONResponse> call, Throwable t) {
+//
+//                }
+//            });
+
+
     }
-
-
-        private void loadJSON () {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("https://api.nasa.gov")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            NASAIMAGEAPI request = retrofit.create(NASAIMAGEAPI.class);
-            Call<JSONResponse> call = request.getJSON(KEY);
-            call.enqueue(new Callback<JSONResponse>() {
-                @Override
-                public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-                    System.out.println("вошел");
-
-                    JSONResponse jsonResponse = response.body();
-                    data = new ArrayList<>(Arrays.asList(jsonResponse.getNearNarthObjects()));
-
-
-
-                }
-
-                @Override
-                public void onFailure(Call<JSONResponse> call, Throwable t) {
-
-                }
-            });
-
-
-        }
 
 }

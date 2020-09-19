@@ -47,8 +47,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class NearNarthObjects {
-
+    @SerializedName("name")
+    @Expose
     String name;
+    @SerializedName("id")
+    @Expose
     int id;
 
     public NearNarthObjects(String name, int id) {
