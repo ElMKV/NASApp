@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Comet> call, Response<Comet> response) {
                         Comet comet = response.body();
-                        textViewNameComet.append(comet.getLinks());
+//                        textViewNameComet.append(comet.getLinks());
                     }
 
                     @Override
