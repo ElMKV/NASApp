@@ -10,10 +10,15 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Query;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     private String stratDate = "2015-09-07";
     private String endDate = "2015-09-08";
 
+    private ArrayList<NearNarthObjects> data;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +44,12 @@ public class MainActivity extends AppCompatActivity {
         textViewDesc = (TextView) findViewById(R.id.textViewDesc);
         imageView = (ImageView) findViewById(R.id.imageView);
 
+        loadJSON();
+
         textViewNameComet = (TextView) findViewById(R.id.textViewNameComet);
 
         NetworkService.getInstance()
-                .getImage()
+                .getHolder()
                 .getPostWithID(KEY)
                 .enqueue(new Callback<Post>() {
                     @Override
@@ -61,28 +71,35 @@ public class MainActivity extends AppCompatActivity {
                         t.printStackTrace();
                     }
                 });
-
-
-        NetworkService.getInstance()
-                .getData()
-                .getData(KEY)
-                .enqueue(new Callback<Comet>() {
-                    @Override
-                    public void onResponse(Call<Comet> call, Response<Comet> response) {
-                        Comet comet = response.body();
-//                        textViewNameComet.append(comet.getLinks());
-                    }
-
-                    @Override
-                    public void onFailure(Call<Comet> call, Throwable t) {
-                        Toast toast = Toast.makeText(getApplicationContext(), "Error occurred while getting request!", Toast.LENGTH_SHORT);
-
-
-                    }
-                });
-
-
-
-
     }
+
+
+        private void loadJSON () {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("https://api.nasa.gov")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            NASAIMAGEAPI request = retrofit.create(NASAIMAGEAPI.class);
+            Call<JSONResponse> call = request.getJSON(KEY);
+            call.enqueue(new Callback<JSONResponse>() {
+                @Override
+                public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
+                    System.out.println("вошел");
+
+                    JSONResponse jsonResponse = response.body();
+                    data = new ArrayList<>(Arrays.asList(jsonResponse.getNearNarthObjects()));
+
+
+
+                }
+
+                @Override
+                public void onFailure(Call<JSONResponse> call, Throwable t) {
+
+                }
+            });
+
+
+        }
+
 }

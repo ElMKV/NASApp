@@ -30,11 +30,8 @@ public class NetworkService {
         }
         return mInstance;
     }
-    public NASAIMAGEAPI getImage() {
+    public NASAIMAGEAPI getHolder() {
         return mRetrofit.create(NASAIMAGEAPI.class);
-    }
-    public NASACOMETAPI getData() {
-        return mRetrofit.create(NASACOMETAPI.class);
     }
 
 }
