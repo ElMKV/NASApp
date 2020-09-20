@@ -12,6 +12,6 @@ public interface NASAIMAGEAPI {
     public Call<Post> getPostWithID(@Query("api_key") String KEY);
 
     @GET("/neo/rest/v1/neo/browse?")
-    public Call<JSONResponse> getJSON(@Query("api_key") String KEY);
+    public Call<Comet>getJSON(@Query("api_key") String KEY);
 
 }

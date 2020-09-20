@@ -32,24 +32,16 @@ public class MainActivity extends AppCompatActivity {
     private String stratDate = "2015-09-07";
     private String endDate = "2015-09-08";
 
-    private ArrayList<NearNarthObjects> data;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         textViewName = (TextView) findViewById(R.id.textViewTitle);
         textViewDesc = (TextView) findViewById(R.id.textViewDesc);
         imageView = (ImageView) findViewById(R.id.imageView);
-
-        loadJSON();
-
         textViewNameComet = (TextView) findViewById(R.id.textViewNameComet);
-
-
+        loadJSON();
     }
 
 
@@ -71,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
                                 .into(imageView);
                     }
 
-
                     @Override
                     public void onFailure(@NonNull Call<Post> call, @NonNull Throwable t) {
                         Toast toast = Toast.makeText(getApplicationContext(), "Error occurred while getting request!", Toast.LENGTH_SHORT);
@@ -81,54 +72,22 @@ public class MainActivity extends AppCompatActivity {
         NetworkService.getInstance()
                 .getHolder()
                 .getJSON(KEY)
-                .enqueue(new Callback<JSONResponse>() {
+                .enqueue(new Callback<Comet>() {
                     @Override
-                    public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-                        Log.d("json", "Вошел");
-                        JSONResponse jsonResponse = response.body();
-                        data = new ArrayList<>(Arrays.asList(jsonResponse.getNearNarthObjects()));
+                    public void onResponse(Call<Comet> call, Response<Comet> response) {
 
-
-
-
-
+                        Log.d("log", "вошел");
+                        Comet comets = response.body();
 
                     }
 
                     @Override
-                    public void onFailure(Call<JSONResponse> call, Throwable t) {
+                    public void onFailure(Call<Comet> call, Throwable t) {
+                        Log.d("log", "не вошел" + t);
+
 
                     }
                 });
-
-
-//
-//            Retrofit retrofit = new Retrofit.Builder()
-//                    .baseUrl("https://api.nasa.gov")
-//                    .addConverterFactory(GsonConverterFactory.create())
-//                    .build();
-//            NASAIMAGEAPI request = retrofit.create(NASAIMAGEAPI.class);
-//            Call<JSONResponse> call = request.getJSON(KEY);
-//            call.enqueue(new Callback<JSONResponse>() {
-//                @Override
-//                public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
-//
-//                    Log.d("json" , "Вошел");
-//
-//                    JSONResponse jsonResponse = response.body();
-//                    data = new ArrayList<>(Arrays.asList(jsonResponse.getNearNarthObjects()));
-//
-//
-//
-//                }
-//
-//                @Override
-//                public void onFailure(Call<JSONResponse> call, Throwable t) {
-//
-//                }
-//            });
-
-
     }
 
 }
