@@ -14,6 +14,20 @@ public class NearEarthObject {
     @Expose
     private String name;
 
+    @SerializedName("absolute_magnitude_h")
+    @Expose
+    private String absolute_magnitude_h;
+
+    public String getAbsolute_magnitude_h() {
+        return absolute_magnitude_h;
+    }
+
+    public void setAbsolute_magnitude_h(String absolute_magnitude_h) {
+        this.absolute_magnitude_h = absolute_magnitude_h;
+    }
+
+
+
 
     public String getId() {
         return id;

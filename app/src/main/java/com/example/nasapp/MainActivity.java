@@ -2,6 +2,8 @@ package com.example.nasapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -26,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
     TextView textViewName;
     TextView textViewDesc;
     ImageView imageView;
+    RecyclerView recyclerView;
 
-    TextView textViewNameComet;
+
     private String KEY = "1gzGfmSJbbcPKLiDyd59NHKlQhXSD8iAbGnezrDS";
     private String stratDate = "2015-09-07";
     private String endDate = "2015-09-08";
+
+    CometAdapter adapter;
+
 
 
     @Override
@@ -40,7 +46,15 @@ public class MainActivity extends AppCompatActivity {
         textViewName = (TextView) findViewById(R.id.textViewTitle);
         textViewDesc = (TextView) findViewById(R.id.textViewDesc);
         imageView = (ImageView) findViewById(R.id.imageView);
-        textViewNameComet = (TextView) findViewById(R.id.textViewNameComet);
+
+        recyclerView = findViewById(R.id.recycler);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(manager);
+
+
+
         loadJSON();
     }
 
@@ -78,6 +92,21 @@ public class MainActivity extends AppCompatActivity {
 
                         Log.d("log", "вошел");
                         Comet comets = response.body();
+
+                        ArrayList<NearEarthObject>nearEarthObjects = (ArrayList<NearEarthObject>) comets.getNearEarthObjects();
+                        adapter = new CometAdapter(MainActivity.this,nearEarthObjects);
+
+                        recyclerView.setAdapter(adapter);
+
+                        Log.d("log", String.valueOf(nearEarthObjects.size()));
+
+                        for (int i = 0; i<nearEarthObjects.size(); i++)
+                        {
+                            Log.d("log", nearEarthObjects.get(i).getName());
+
+                        }
+
+
 
                     }
 
