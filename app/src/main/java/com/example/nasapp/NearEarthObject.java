@@ -18,6 +18,20 @@ public class NearEarthObject {
     @Expose
     private String absolute_magnitude_h;
 
+    @SerializedName("is_sentry_object")
+    @Expose
+    private Boolean is_sentry_object;
+
+    public Boolean getIs_sentry_object() {
+        return is_sentry_object;
+    }
+
+    public void setIs_sentry_object(Boolean is_sentry_object) {
+        this.is_sentry_object = is_sentry_object;
+    }
+
+
+
     public String getAbsolute_magnitude_h() {
         return absolute_magnitude_h;
     }
