@@ -1,7 +1,9 @@
 package com.example.nasapp;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,8 @@ import java.util.List;
 
 
 public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> {
+    Dialog dialog;
+
 
     Context context;
     List<NearEarthObject> list;
@@ -64,29 +68,42 @@ public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> 
         @Override
         public void onClick(View view) {
 
-
-
             for(int i = 0; i<list.size(); i++){
                 if(getLayoutPosition()==i){
                     int id = list.get(i).getId();
                     String name  = list.get(i).getName();
-                    float sizeComet = list.get(i).getAbsolute_magnitude_h();
+                    String sizeComet = list.get(i).getAbsolute_magnitude_h();
                     Boolean isPotentiallyHazardousAsteroid = list.get(i).getIs_potentially_hazardous_asteroid();
                     Boolean isSentryObject = list.get(i).getIs_sentry_object();
 
-                    Toast.makeText(view.getContext(), "position = " + getLayoutPosition(), Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, CometActivityDescripion.class);
-                    intent.putExtra("id", id);
-                    intent.putExtra("name", name);
-                    intent.putExtra("sizeComet", sizeComet);
-                    intent.putExtra("isPotentiallyHazardousAsteroid", isPotentiallyHazardousAsteroid);
-                    intent.putExtra("isSentryObject", isSentryObject);
+//                    Toast.makeText(view.getContext(), "position = " + getLayoutPosition(), Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(context, CometActivityDescripion.class);
+//                    intent.putExtra("id", id);
+//                    intent.putExtra("name", name);
+//                    intent.putExtra("sizeComet", sizeComet);
+//                    intent.putExtra("isPotentiallyHazardousAsteroid", isPotentiallyHazardousAsteroid);
+//                    intent.putExtra("isSentryObject", isSentryObject);
 
-                    context.startActivity(intent);
+
+//                    context.startActivity(intent);
+
+
 
 
                 }
             }
+
+            dialog = new Dialog(context);
+            // Установите заголовок
+            dialog.setTitle("Заголовок диалога");
+            // Передайте ссылку на разметку
+            dialog.setContentView(R.layout.dialog_alert);
+            // Найдите элемент TextView внутри вашей разметки
+            // и установите ему соответствующий текст
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dialog.show();
+
+
         }
     }
 

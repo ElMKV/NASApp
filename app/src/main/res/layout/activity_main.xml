@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -15,6 +15,7 @@
         android:layout_weight="1"
         app:cardBackgroundColor="@color/colorBackgroundCard"
         app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
         app:cardPreventCornerOverlap="false"
         app:contentPaddingBottom="0dp"
         app:contentPaddingLeft="0dp"
@@ -38,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="#D70A036A"
+                android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -50,7 +51,7 @@
                     android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:text="Название"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/colorTextCard"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -71,9 +72,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="Ближайшие астероиды за все время"
-            android:textColor="#FFFFFF"
+            android:text="БЛИЖАЙШИЕ АСТЕРОИДЫ ЗА ВСЕ ВРЕМЯ "
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimary" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"

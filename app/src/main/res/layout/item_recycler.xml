@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorBackgroundCard">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Имя"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -28,8 +28,13 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:text="Звездная величина - "
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#BE18014A"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

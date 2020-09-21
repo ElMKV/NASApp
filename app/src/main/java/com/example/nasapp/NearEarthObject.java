@@ -16,7 +16,7 @@ public class NearEarthObject {
 
     @SerializedName("absolute_magnitude_h")
     @Expose
-    private float absolute_magnitude_h;
+    private String absolute_magnitude_h;
 
     @SerializedName("is_potentially_hazardous_asteroid")
     @Expose
@@ -44,11 +44,11 @@ public class NearEarthObject {
 
 
 
-    public float getAbsolute_magnitude_h() {
+    public String getAbsolute_magnitude_h() {
         return absolute_magnitude_h;
     }
 
-    public void setAbsolute_magnitude_h(float absolute_magnitude_h) {
+    public void setAbsolute_magnitude_h(String absolute_magnitude_h) {
         this.absolute_magnitude_h = absolute_magnitude_h;
     }
 
