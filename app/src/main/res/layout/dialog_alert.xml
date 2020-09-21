@@ -49,7 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:text="Размер"
+                android:textColor="@color/colorTextCard"
                 android:textSize="18sp" />
 
             <TextView
@@ -62,7 +63,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/textViewisSentryObject"
+                android:id="@+id/textViewIsSentryObject"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"

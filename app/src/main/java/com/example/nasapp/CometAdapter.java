@@ -78,7 +78,7 @@ public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> 
             final TextView textViewName = (TextView) promptsView.findViewById(R.id.textViewName);
             final TextView textViewSizeComet = (TextView) promptsView.findViewById(R.id.textViewSizeComet);
             final TextView textViewIsPotentiallyHazardousAsteroid = (TextView) promptsView.findViewById(R.id.textViewisPotentiallyHazardousAsteroid);
-            final TextView textViewIsSentryObject = (TextView) promptsView.findViewById(R.id.textViewSizeComet);
+            final TextView textViewIsSentryObject = (TextView) promptsView.findViewById(R.id.textViewIsSentryObject);
 
 
 
@@ -92,7 +92,7 @@ public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> 
 
                     Log.d("comeize", sizeComet);
 
-                    textViewId.setText("Номер: " + id);
+                    textViewId.setText("Номер: " + id );
                     textViewName.setText("Имя: " + name);
                     textViewSizeComet.setText("Звездный размер : " + sizeComet);
 
