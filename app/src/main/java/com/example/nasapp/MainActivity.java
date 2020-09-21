@@ -88,7 +88,10 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("log", String.valueOf(nearEarthObjects.size()));
                         for (int i = 0; i<nearEarthObjects.size(); i++)
                         {
-                            Log.d("log", nearEarthObjects.get(i).getName());
+                            Log.d("log", nearEarthObjects.get(i).getName() + "Имя");
+                            Log.d("log", String.valueOf(nearEarthObjects.get(i).getIs_sentry_object())+ "Наблюдаем");
+                            Log.d("log", String.valueOf(nearEarthObjects.get(i).getId())+ "id");
+                            Log.d("log", String.valueOf(nearEarthObjects.get(i).getAbsolute_magnitude_h())+ "Размер");
                         }
                     }
                     @Override
