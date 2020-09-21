@@ -44,7 +44,7 @@ public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull CometAdapter.ViewHolder holder, int position) {
-        holder.name.setText(list.get(position).getName());
+        holder.name.append(" "+ list.get(position).getName());
         holder.star.append(" " + list.get(position).getAbsolute_magnitude_h());
 
     }
@@ -94,7 +94,7 @@ public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> 
 
                     textViewId.setText("Номер: " + id );
                     textViewName.setText("Имя: " + name);
-                    textViewSizeComet.setText("Звездный размер : " + sizeComet);
+                    textViewSizeComet.setText("Звездный величина: " + sizeComet);
 
                     if (isPotentiallyHazardousAsteroid)
                     {

@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="БЛИЖАЙШИЕ АСТЕРОИДЫ ЗА ВСЕ ВРЕМЯ "
+            android:text="@string/comet_around"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
 

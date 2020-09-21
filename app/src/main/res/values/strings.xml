@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">NASApp</string>
+    <string name="number">Номер: </string>
+    <string name="name">Имя: </string>
+    <string name="star_size">Звездный размер: </string>
+    <string name="is_dangerous">Этот объект опасен</string>
+    <string name="size_comet">Звездная величина: </string>
+    <string name="not_dangerous">Этот объект не опасен</string>
+    <string name="is_watches">Этот объект наблюдаем</string>
+    <string name="not_watches">Этот объект не наблюдаем</string>
+    <string name="size_recyclerView">Ближайшие астероиды за все время: </string>
+    <string name="comet_around">БЛИЖАЙШИЕ АСТЕРОИДЫ ЗА ВСЕ ВРЕМЯ</string>
 </resources>
