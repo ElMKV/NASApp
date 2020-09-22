@@ -37,29 +37,19 @@ public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> 
     public CometAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.item_recycler, parent, false);
         ViewHolder holder = new ViewHolder(v);
-
         return new ViewHolder(v);
-
     }
-
     @Override
     public void onBindViewHolder(@NonNull CometAdapter.ViewHolder holder, int position) {
-        holder.name.append(" "+ list.get(position).getName());
-        holder.star.append(" " + list.get(position).getAbsolute_magnitude_h());
-
+        holder.name.setText("Имя: "+ list.get(position).getName());
+        holder.star.setText("Звездная величина: " + list.get(position).getAbsolute_magnitude_h());
     }
-
     @Override
     public int getItemCount() {
         return list.size();
-
     }
-
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView name, star;
-
-
         public ViewHolder(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.textViewNameComet);
