@@ -30,6 +30,7 @@ public class NetworkService {
         }
         return mInstance;
     }
+
     public NASAIMAGEAPI getHolder() {
         return mRetrofit.create(NASAIMAGEAPI.class);
     }

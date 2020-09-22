@@ -22,11 +22,8 @@ import java.util.List;
 
 
 public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> {
-
-
     Context context;
     List<NearEarthObject> list;
-
     public CometAdapter(Context context, List<NearEarthObject> list) {
         this.context = context;
         this.list = list;
@@ -69,9 +66,6 @@ public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> 
             final TextView textViewSizeComet = (TextView) promptsView.findViewById(R.id.textViewSizeComet);
             final TextView textViewIsPotentiallyHazardousAsteroid = (TextView) promptsView.findViewById(R.id.textViewisPotentiallyHazardousAsteroid);
             final TextView textViewIsSentryObject = (TextView) promptsView.findViewById(R.id.textViewIsSentryObject);
-
-
-
             for (int i = 0; i < list.size(); i++) {
                 if (getLayoutPosition() == i) {
                     String id = String.valueOf(list.get(i).getId());
@@ -107,6 +101,4 @@ public class CometAdapter extends RecyclerView.Adapter<CometAdapter.ViewHolder> 
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
     }
-
-
 }

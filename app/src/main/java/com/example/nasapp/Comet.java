@@ -14,7 +14,6 @@ public class Comet {
     @Expose
     private List<NearEarthObject> nearEarthObjects = new ArrayList<>();
 
-
     public List<NearEarthObject> getNearEarthObjects() {
         return nearEarthObjects;
     }
