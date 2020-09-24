@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -15,6 +15,7 @@
         android:layout_weight="1"
         app:cardBackgroundColor="@color/colorBackgroundCard"
         app:cardCornerRadius="20dp"
+        app:cardElevation="4dp"
         app:cardPreventCornerOverlap="false"
         app:contentPaddingBottom="0dp"
         app:contentPaddingLeft="0dp"
@@ -38,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_margin="10dp"
+                android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -46,20 +47,14 @@
                     android:id="@+id/textViewTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="#FFFFFF"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text="Название"
+                    android:textColor="@color/colorTextCard"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textViewDesc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autoText="false"
-                    android:maxLines="2"
-                    android:textAlignment="textStart"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
             </LinearLayout>
         </ScrollView>
 
@@ -69,6 +64,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"/>
-
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textViewAsteroi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@string/comet_around"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimary" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:clipToPadding="true"
+            android:labelFor="@id/textViewAsteroi"
+            tools:listitem="@layout/item_recycler" />
+    </LinearLayout>
 </LinearLayout>
